@@ -1,20 +1,26 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import ServicesOverview from "@/components/ServicesOverview";
-import TeamPreview from "@/components/TeamPreview";
-import AppointmentBooking from "@/components/AppointmentBooking";
+import CostEffectiveSection from "@/components/CostEffectiveSection";
+import ServicesGrid from "@/components/ServicesGrid";
+import HighlightSection from "@/components/HighlightSection";
+import DoctorsSection from "@/components/DoctorsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import QuoteFormSection from "@/components/QuoteFormSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <Header />
       <HeroSection />
-      <ServicesOverview />
-      <TeamPreview />
-      <AppointmentBooking />
+      <CostEffectiveSection />
+      <ServicesGrid />
+      <HighlightSection />
+      <DoctorsSection />
+      <TestimonialsSection />
+      <QuoteFormSection />
       <Footer />
-    </main>
+    </div>
   );
 };
 
