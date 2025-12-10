@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -28,14 +29,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-                <span className="font-bold text-xl text-primary-foreground">SH</span>
-              </div>
-              <div>
-                <p className="font-bold text-lg">Siaya Healthcare</p>
-                <p className="text-sm text-primary-foreground/70">Medical Centre</p>
-              </div>
+            <div className="mb-6">
+              <img src={logo} alt="Siaya Healthcare Centre" className="h-20 w-auto bg-white rounded-lg p-2" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
               Bringing healthcare home. Quality care for families across Yala, Bondo, and Madiany. Your health is our priority.
