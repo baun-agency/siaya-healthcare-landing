@@ -1,136 +1,65 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calendar, Home, Heart, Shield, Users } from "lucide-react";
-import heroImage from "@/assets/hero-medical.jpg";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
+import heroDoctor from "@/assets/hero-doctor.jpg";
+import nurseHero from "@/assets/nurse-hero.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-hero overflow-hidden pt-20">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-sky-blue/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-medical-blue/5 rounded-full blur-3xl" />
-        <svg className="absolute top-40 left-10 w-20 h-20 text-medical-blue/10 animate-float" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/>
-        </svg>
-        <svg className="absolute bottom-40 right-20 w-16 h-16 text-sky-blue/20 animate-float" style={{ animationDelay: "2s" }} viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/>
-        </svg>
+    <section className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-sky-blue-light via-background to-background">
+      <div className="absolute top-32 right-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-sky-blue/10 blur-2xl" />
+      
+      <svg className="absolute top-40 left-1/4 w-48 h-48 text-primary/20" viewBox="0 0 100 100">
+        <path d="M10,50 Q50,10 90,50" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+      </svg>
+
+      <div className="container-custom section-padding flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex-1 text-center lg:text-left z-10">
+          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">Welcome to Siaya Healthcare</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
+            Caring for <span className="text-primary">Health</span><br />Caring for <span className="text-primary">You</span>
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-xl mb-8">
+            Welcome to a place where quality care meets community. At Siaya Healthcare Medical Centre, we are dedicated to providing safe, accessible, and compassionate healthcare to families across Yala, Bondo, and Madiany.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <Link to="/booking"><Button size="lg" className="rounded-full px-8">Book Appointment<ArrowRight className="w-4 h-4 ml-2" /></Button></Link>
+            <Link to="/online-consult"><Button variant="outline" size="lg" className="rounded-full px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground"><Play className="w-4 h-4 mr-2" />Online Consult</Button></Link>
+          </div>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="flex-1 relative">
+          <div className="relative flex items-end justify-center lg:justify-end gap-4">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-sky-blue/30 rounded-[2rem] blur-xl" />
+              <img src={heroDoctor} alt="Doctor" className="relative w-64 md:w-80 h-auto rounded-[2rem] shadow-lg object-cover" />
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6, type: "spring" }} className="absolute -left-8 bottom-20 bg-card rounded-2xl p-4 shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"><span className="text-primary font-bold text-xl">24</span></div>
+                  <div><p className="text-navy font-bold text-sm">Hours</p><p className="text-muted-foreground text-xs">Emergency Care</p></div>
+                </div>
+              </motion.div>
+            </div>
+            <div className="hidden md:block relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-sky-blue/20 to-primary/20 rounded-[2rem] blur-xl" />
+              <img src={nurseHero} alt="Nurse" className="relative w-48 h-auto rounded-[2rem] shadow-lg object-cover" />
+            </div>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="container-custom section-padding relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
-            {/* Logo Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-3 bg-card rounded-full px-5 py-2.5 shadow-card mb-8"
-            >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-medical-blue to-navy flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">SH</span>
-              </div>
-              <span className="font-semibold text-navy">Siaya Healthcare Medical Centre</span>
-            </motion.div>
-
-            {/* Headline */}
-            <h1 className="heading-1 text-navy mb-6">
-              Bringing healthcare{" "}
-              <span className="text-primary">home.</span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="body-large text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-              Welcome to a place where quality care meets community. At Siaya Healthcare Medical Center, we are dedicated to providing safe, accessible, and compassionate healthcare to families across Yala, Bondo, and Madiany. Whether you need maternity support, emergency care, surgery, or everyday medical services, our team is here to serve you with excellence and respect.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
-              <Button variant="hero" size="xl">
-                <Calendar className="w-5 h-5" />
-                Book an Appointment
-              </Button>
-              <Button variant="heroOutline" size="xl">
-                <Home className="w-5 h-5" />
-                Request a Home Visit
-              </Button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
-              {[
-                { icon: Heart, text: "Compassionate Care" },
-                { icon: Shield, text: "Safe & Trusted" },
-                { icon: Users, text: "Community Focused" },
-              ].map((badge, index) => (
-                <motion.div
-                  key={badge.text}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="flex items-center gap-2 text-sm text-muted-foreground"
-                >
-                  <badge.icon className="w-4 h-4 text-primary" />
-                  {badge.text}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Hero Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src={heroImage}
-                alt="Siaya Healthcare Medical Centre - Professional healthcare services"
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" />
-            </div>
-
-            {/* Floating Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
-              className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-5 shadow-lg hidden md:block"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="font-bold text-navy text-lg">3 Locations</p>
-                  <p className="text-sm text-muted-foreground">Yala • Bondo • Madiany</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* 24/7 Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.9 }}
-              className="absolute -top-4 -right-4 bg-navy text-primary-foreground rounded-2xl px-5 py-3 shadow-lg hidden md:block"
-            >
-              <p className="font-bold">24/7</p>
-              <p className="text-xs opacity-80">Emergency Care</p>
-            </motion.div>
-          </motion.div>
+      <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="container-custom px-4 sm:px-6 lg:px-8 -mt-8 pb-16 relative z-20">
+        <div className="bg-card rounded-2xl shadow-lg p-6 md:p-8 border border-border">
+          <div className="grid md:grid-cols-4 gap-4">
+            <div><label className="text-sm font-medium text-muted-foreground mb-2 block">Service</label><select className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"><option>Medical Services</option><option>Diagnostic Services</option><option>Surgical Services</option><option>Home Visit</option></select></div>
+            <div><label className="text-sm font-medium text-muted-foreground mb-2 block">Location</label><select className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"><option>Yala</option><option>Bondo</option><option>Madiany</option></select></div>
+            <div><label className="text-sm font-medium text-muted-foreground mb-2 block">Date</label><input type="date" className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" /></div>
+            <div className="flex items-end"><Link to="/booking" className="w-full"><Button className="w-full rounded-xl py-6">Find Service</Button></Link></div>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
