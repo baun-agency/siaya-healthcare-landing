@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.jpg";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -22,14 +23,8 @@ const Header = () => {
       <div className="container-custom section-padding !py-0">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-medical-blue to-navy flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">S</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="font-bold text-navy text-lg leading-tight">Siaya Healthcare</p>
-              <p className="text-xs text-muted-foreground">Medical Centre</p>
-            </div>
+          <Link to="/" className="flex items-center gap-2">
+            <img src={logo} alt="Siaya Healthcare Centre" className="h-14 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
