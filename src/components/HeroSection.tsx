@@ -4,10 +4,19 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroDoctor from "@/assets/hero-doctor.jpg";
 import nurseHero from "@/assets/nurse-hero.jpg";
+import hospitalEntrance from "@/assets/hospital-entrance.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-sky-blue-light via-background to-background">
+    <section className="relative min-h-screen pt-20 overflow-hidden">
+      {/* Hospital background image with fade */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${hospitalEntrance})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/85 to-sky-blue-light/80" />
+      
+      {/* Decorative elements */}
       <div className="absolute top-32 right-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
       <div className="absolute bottom-20 left-10 w-64 h-64 rounded-full bg-sky-blue/10 blur-2xl" />
       
