@@ -1,26 +1,28 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Services", href: "#services" },
-  { name: "Medical Care", href: "#medical-services" },
-  { name: "Diagnostics", href: "#diagnostics" },
-  { name: "Online Consult", href: "#online-consultation" },
-  { name: "About Us", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Online Consult", href: "/online-consult" },
+  { name: "About Us", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-clean-white/95 backdrop-blur-md border-b border-border">
       <div className="container-custom section-padding !py-0">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-medical-blue to-navy flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xl">S</span>
             </div>
@@ -28,18 +30,23 @@ const Header = () => {
               <p className="font-bold text-navy text-lg leading-tight">Siaya Healthcare</p>
               <p className="text-xs text-muted-foreground">Medical Centre</p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                to={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors duration-200",
+                  location.pathname === link.href
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
+                )}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -49,7 +56,9 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               0733906199
             </a>
-            <Button size="sm">Book Appointment</Button>
+            <Link to="/booking">
+              <Button size="sm">Book Appointment</Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -74,21 +83,28 @@ const Header = () => {
           >
             <nav className="container-custom section-padding !py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-base font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                  className={cn(
+                    "text-base font-medium transition-colors py-2",
+                    location.pathname === link.href
+                      ? "text-primary"
+                      : "text-foreground/80 hover:text-primary"
+                  )}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-border">
                 <a href="tel:0733906199" className="flex items-center gap-2 text-primary font-medium">
                   <Phone className="w-4 h-4" />
                   0733906199 (24/7)
                 </a>
-                <Button className="w-full">Book Appointment</Button>
+                <Link to="/booking" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="w-full">Book Appointment</Button>
+                </Link>
               </div>
             </nav>
           </motion.div>

@@ -1,4 +1,14 @@
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "Our Services", href: "/services" },
+  { name: "Online Consultation", href: "/online-consult" },
+  { name: "Book Appointment", href: "/booking" },
+  { name: "About Us", href: "/about" },
+  { name: "Contact Us", href: "/contact" },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -34,14 +44,18 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Branches */}
+          {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-lg mb-6">Our Branches</h4>
-            <ul className="space-y-4">
-              {["Yala Branch", "Bondo Branch", "Madiany Branch"].map((branch) => (
-                <li key={branch} className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-primary-foreground/50 mt-1 flex-shrink-0" />
-                  <span className="text-sm text-primary-foreground/70">{branch}</span>
+            <h4 className="font-bold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
