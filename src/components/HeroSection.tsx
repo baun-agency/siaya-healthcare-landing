@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
-import heroDoctor from "@/assets/hero-doctor.jpg";
+import heroDoctor from "@/assets/hero-doctor.png";
 import nurseHero from "@/assets/nurse-hero.jpg";
 import hospitalEntrance from "@/assets/hospital-entrance.jpg";
 
