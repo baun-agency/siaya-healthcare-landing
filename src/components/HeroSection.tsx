@@ -24,8 +24,8 @@ const HeroSection = () => {
         <path d="M10,50 Q50,10 90,50" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
       </svg>
 
-      <div className="container-custom section-padding flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex-1 text-center lg:text-left z-10">
+      <div className="container-custom section-padding flex flex-col lg:flex-row items-center gap-12 lg:gap-8 relative">
+        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex-1 text-center lg:text-left z-10 lg:max-w-[55%]">
           <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">Welcome to Siaya Healthcare</span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
             Caring for <span className="text-primary">Health</span><br />Caring for <span className="text-primary">You</span>
@@ -39,23 +39,20 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="flex-1 relative">
-          <div className="relative flex items-end justify-center lg:justify-end gap-4">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-sky-blue/30 rounded-[2rem] blur-xl" />
-              <img src={heroDoctor} alt="Doctor" className="relative w-64 md:w-80 h-auto rounded-[2rem] shadow-lg object-cover" />
-              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6, type: "spring" }} className="absolute -left-8 bottom-20 bg-card rounded-2xl p-4 shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"><span className="text-primary font-bold text-xl">24</span></div>
-                  <div><p className="text-navy font-bold text-sm">Hours</p><p className="text-muted-foreground text-xs">Emergency Care</p></div>
-                </div>
-              </motion.div>
+        {/* Doctor image positioned at bottom-right, 80% height */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8, delay: 0.3 }} 
+          className="absolute bottom-0 right-0 lg:right-10 xl:right-20 h-[80%] w-auto z-10 hidden md:block"
+        >
+          <img src={heroDoctor} alt="Doctor" className="h-full w-auto object-contain object-bottom drop-shadow-2xl" />
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6, type: "spring" }} className="absolute left-0 bottom-24 bg-card rounded-2xl p-4 shadow-lg">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"><span className="text-primary font-bold text-xl">24</span></div>
+              <div><p className="text-navy font-bold text-sm">Hours</p><p className="text-muted-foreground text-xs">Emergency Care</p></div>
             </div>
-            <div className="hidden md:block relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-sky-blue/20 to-primary/20 rounded-[2rem] blur-xl" />
-              <img src={nurseHero} alt="Nurse" className="relative w-48 h-auto rounded-[2rem] shadow-lg object-cover" />
-            </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
