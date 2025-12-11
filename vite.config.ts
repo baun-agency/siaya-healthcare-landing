@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react"; // ← standard esbuild version (no SWC)
+import react from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
   },
 
   plugins: [
-    react(),                                      // ← esbuild, no native binary problems
+    react(),
     mode === "development" && componentTagger(),
   ].filter(Boolean),
 
@@ -21,6 +21,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
 
-  // GitHub Pages base path
+  // GitHub Pages configuration
   base: "/siaya-healthcare-landing/",
+  
+  // Output to /docs for GitHub Pages
+  build: {
+    outDir: "docs",
+    emptyDirBeforeWrite: true,
+  },
 }));
